@@ -325,7 +325,7 @@ var Connectus = React.createClass({displayName: "Connectus",
           React.createElement("div", null, 
             React.createElement(RouteHandler, null)
           )
-        )  
+        ) 
       );
     }
 
@@ -442,7 +442,7 @@ var outletsList = React.createClass({displayName: "outletsList",
     }
 
     var that = this;
-
+    // outlet data list
     if (this.state.data.length !==0) {
       var outletHtml = this.state.data.map(function(outlet) {
         return (
@@ -474,24 +474,46 @@ var outletsList = React.createClass({displayName: "outletsList",
         )
       });
     }
+    // includes search bar, map/list button and possibly filter/sort buttons
+    
+    //onClick={this.handleSubmit}
+    var listMenu = (
+      React.createElement("div", null, 
+        React.createElement("div", {className: "ui button"}, " map"), 
+        React.createElement("div", {className: "ui input"}, 
+          React.createElement("input", {type: "text", placeholder: "Search..."}, " ")
+        )
+      )
+    );
 
-      return (
-        React.createElement("div", {className: "outletsList container"}, 
-          React.createElement("table", {className: "ui selectable celled padded table"}, 
-            React.createElement("thead", null, 
-              React.createElement("tr", null, React.createElement("th", {className: "single line"}, "Outlet Name"), 
-              React.createElement("th", null, "Seller"), 
-              React.createElement("th", null, "Rating"), 
-              React.createElement("th", null, "Voltage"), 
-              React.createElement("th", null, "Price"), 
-              React.createElement("th", null, "Description")
-            )), 
-            React.createElement("tbody", null, 
-               outletHtml 
-            )
+    var outletTable = 
+      React.createElement("div", {className: "outletsList container"}, 
+        React.createElement("table", {className: "ui selectable celled padded table"}, 
+          React.createElement("thead", null, 
+            React.createElement("tr", null, React.createElement("th", {className: "single line"}, "Outlet Name"), 
+            React.createElement("th", null, "Seller"), 
+            React.createElement("th", null, "Rating"), 
+            React.createElement("th", null, "Voltage"), 
+            React.createElement("th", null, "Price"), 
+            React.createElement("th", null, "Description")
+          )), 
+          React.createElement("tbody", null, 
+             outletHtml 
           )
         )
       )
+
+    return (
+      React.createElement("div", null, 
+        React.createElement("div", null, 
+          listMenu
+        ), 
+        React.createElement("div", null, 
+          outletTable
+        )
+        
+      )
+    )
     // });  from the promise closing
   },
 
